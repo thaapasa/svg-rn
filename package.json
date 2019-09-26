@@ -1,0 +1,23 @@
+{
+  "name": "svg-rn",
+  "version": "0.0.1",
+  "description": "SVG to React Native -converter",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thaapasa/svg-rn.git"
+  },
+  "keywords": [
+    "svg",
+    "react-native"
+  ],
+  "author": "Tuukka Haapasalo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thaapasa/svg-rn/issues"
+  },
+  "homepage": "https://github.com/thaapasa/svg-rn#readme"
+}
