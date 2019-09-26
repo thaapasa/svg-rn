@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/thaapasa/svg-rn/issues"
   },
-  "homepage": "https://github.com/thaapasa/svg-rn#readme"
+  "homepage": "https://github.com/thaapasa/svg-rn#readme",
+  "devDependencies": {
+    "typescript": "3.6.3"
+  }
 }
