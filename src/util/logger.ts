@@ -1,3 +1,3 @@
-export function log(...msg: string[]) {
+export function log(...msg: any[]) {
   console.log(...msg);
 }

@@ -13,7 +13,9 @@ const removeExtraAttrs = (attrs: xmljs.Attributes): xmljs.Attributes => {
 };
 
 const renameAttributeKeys = (attrs: xmljs.Attributes): xmljs.Attributes =>
-  pairsToObject(Object.keys(attrs).map<[string, AttributeValue]>(k => [hyphenCaseToCamelCase(k), attrs[k]]));
+  pairsToObject(
+    Object.keys(attrs).map<[string, AttributeValue]>(k => [hyphenCaseToCamelCase(k), attrs[k]]),
+  );
 
 const expandStyleValue = (value?: string | number): xmljs.Attributes =>
   value && typeof value === 'string'
@@ -21,7 +23,9 @@ const expandStyleValue = (value?: string | number): xmljs.Attributes =>
         flatten(
           value
             .split(';')
-            .map<Array<[string, string]>>(d => (d.indexOf(':') > 0 ? [d.split(':', 2) as [string, string]] : [])),
+            .map<Array<[string, string]>>(d =>
+              d.indexOf(':') > 0 ? [d.split(':', 2) as [string, string]] : [],
+            ),
         ),
       )
     : {};
@@ -51,6 +55,8 @@ export function fixSvgForRN(svg: xmljs.Element): xmljs.Element {
     elements: svg.elements
       ? svg.elements.filter(e => e.name !== 'title' && e.name !== 'desc').map(fixElement)
       : undefined,
-    attributes: attrs ? { width: attrs.width, height: attrs.height, viewBox: attrs.viewBox } : undefined,
+    attributes: attrs
+      ? { width: attrs.width, height: attrs.height, viewBox: attrs.viewBox }
+      : undefined,
   });
 }

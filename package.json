@@ -2,11 +2,11 @@
   "name": "svg-rn",
   "version": "0.0.1",
   "description": "SVG to React Native -converter",
-  "main": "lib/index.js",
+  "main": "lib/svg-rn.js",
   "scripts": {
     "build": "tsc",
-    "start": "node lib/index.js",
-    "dev": "ts-node src/index.ts",
+    "start": "node lib/svg-rn.js",
+    "dev": "ts-node src/svg-rn.ts",
     "clean": "rm -rf lib",
     "test": "jest",
     "lint": "eslint src/**/*"
@@ -37,6 +37,7 @@
     "typescript": "3.6.3"
   },
   "dependencies": {
+    "commander": "^3.0.2",
     "xml-js": "^1.6.11"
   }
 }
