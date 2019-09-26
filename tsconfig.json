@@ -3,7 +3,6 @@
     "target": "es5",
     "module": "commonjs",
     "noImplicitAny": true,
-    "lib": ["es2015"],
     "outDir": "./lib",
     "removeComments": false,
     "preserveConstEnums": true,

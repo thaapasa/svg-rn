@@ -39,7 +39,6 @@
   },
   "dependencies": {
     "debug": "4.1.1",
-    "tslib": "1.10.0",
     "xml-js": "1.6.11"
   }
 }
