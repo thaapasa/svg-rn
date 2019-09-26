@@ -18,11 +18,6 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@types/debug@4.1.5":
-  version "4.1.5"
-  resolved "https://registry.yarnpkg.com/@types/debug/-/debug-4.1.5.tgz#b14efa8852b7768d898906613c23f688713e02cd"
-  integrity sha512-Q1y515GcOdTHgagaVFhHnIFQ38ygs/kmxdNpvpou+raI9UO3YZcHDngBSYKQklcKlvA7iuQlmIKbzvmxcOE9CQ==
-
 "@types/eslint-visitor-keys@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@types/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#1ee30d79544ca84d68d4b3cdb0af4f205663dd2d"
@@ -214,7 +209,7 @@ cross-spawn@^6.0.5:
     shebang-command "^1.2.0"
     which "^1.2.9"
 
-debug@4.1.1, debug@^4.0.1:
+debug@^4.0.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.1.1.tgz#3b72260255109c6b589cee050f1d516139664791"
   integrity sha512-pYAIzeRo8J6KPEaJ0VWOh5Pzkbw/RetuzehGM7QRRX5he4fPHx2rdKMB256ehJCkX+XRQm16eZLqLNS8RSZXZw==
@@ -957,7 +952,7 @@ write@1.0.3:
   dependencies:
     mkdirp "^0.5.1"
 
-xml-js@1.6.11:
+xml-js@^1.6.11:
   version "1.6.11"
   resolved "https://registry.yarnpkg.com/xml-js/-/xml-js-1.6.11.tgz#927d2f6947f7f1c19a316dd8eea3614e8b18f8e9"
   integrity sha512-7rVi2KMfwfWFl+GpPg6m80IVMWXLRjO+PxTq7V2CDhoGak0wzYzFgUY2m4XJ47OGdXd8eLE8EmwfAmdjw7lC1g==

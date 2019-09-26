@@ -1,9 +1,7 @@
 import * as xmljs from 'xml-js';
-import * as debug from 'debug';
 import { wrapAsJsx } from './output';
 import { fixSvgForRN } from './fix-svg';
-
-const log = debug('svg-rn:svg-to-rn');
+import { log } from './util/logger';
 
 function retrieveElementNames(el: xmljs.Element, rec: Record<string, null>) {
   if (el.name) {

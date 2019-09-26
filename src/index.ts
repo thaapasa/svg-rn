@@ -1,9 +1,7 @@
-import * as debug from 'debug';
 import { svgToReactNative } from './svg-to-rn';
 
 import * as fs from 'fs';
-
-const log = debug('svg-rn:index');
+import { log } from './util/logger';
 
 function output(data: string) {
   console.log(data);
