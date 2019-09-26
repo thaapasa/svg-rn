@@ -1,1 +1,5 @@
-console.log("svg-rn starts")
+function run() {
+  console.log('svg-rn starts');
+}
+
+run();
