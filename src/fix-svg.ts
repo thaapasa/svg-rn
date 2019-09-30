@@ -35,8 +35,20 @@ const expandStyleAttribute = (attrs: xmljs.Attributes): xmljs.Attributes => {
   return { ...rest, ...expandStyleValue(style) };
 };
 
+const removePrefixes = (attrs: xmljs.Attributes): xmljs.Attributes => {
+  const results = { ...attrs };
+  Object.keys(attrs).forEach(k => {
+    const parts = k.split(':');
+    if (parts.length > 1) {
+      delete results[k];
+      results[parts[parts.length - 1]] = attrs[k];
+    }
+  });
+  return results;
+};
+
 function fixAttributes(attrs: xmljs.Attributes): xmljs.Attributes {
-  return renameAttributeKeys(expandStyleAttribute(removeExtraAttrs(attrs)));
+  return renameAttributeKeys(removePrefixes(expandStyleAttribute(removeExtraAttrs(attrs))));
 }
 
 function fixElement(element: xmljs.Element): xmljs.Element {
