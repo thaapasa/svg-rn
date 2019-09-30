@@ -1,13 +1,13 @@
 {
   "name": "svg-rn",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "SVG to React Native -converter",
   "main": "lib/index.js",
-  "bin" : {
-    "svg-rn" : "lib/cli.js"
+  "bin": {
+    "svg-rn": "lib/cli.js"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && chmod +x lib/cli.js",
     "start": "node lib/cli.js",
     "dev": "ts-node src/cli.ts",
     "prepare": "yarn clean && yarn build",
