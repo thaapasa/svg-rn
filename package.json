@@ -2,15 +2,21 @@
   "name": "svg-rn",
   "version": "0.0.1",
   "description": "SVG to React Native -converter",
-  "main": "lib/svg-rn.js",
+  "main": "lib/index.js",
+  "bin" : {
+    "svg-rn" : "lib/cli.js"
+  },
   "scripts": {
     "build": "tsc",
-    "start": "node lib/svg-rn.js",
-    "dev": "ts-node src/svg-rn.ts",
+    "start": "node lib/cli.js",
+    "dev": "ts-node src/cli.ts",
     "clean": "rm -rf lib",
     "test": "jest",
     "lint": "eslint src/**/*"
   },
+  "files": [
+    "lib"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thaapasa/svg-rn.git"
@@ -25,6 +31,10 @@
     "url": "https://github.com/thaapasa/svg-rn/issues"
   },
   "homepage": "https://github.com/thaapasa/svg-rn#readme",
+  "dependencies": {
+    "commander": "^3.0.2",
+    "xml-js": "^1.6.11"
+  },
   "devDependencies": {
     "@types/node": "12.7.8",
     "@typescript-eslint/eslint-plugin": "2.3.1",
@@ -35,9 +45,5 @@
     "prettier": "1.18.2",
     "ts-node": "8.4.1",
     "typescript": "3.6.3"
-  },
-  "dependencies": {
-    "commander": "^3.0.2",
-    "xml-js": "^1.6.11"
   }
 }
