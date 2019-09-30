@@ -1,6 +1,6 @@
 {
   "name": "svg-rn",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "SVG to React Native -converter",
   "main": "lib/index.js",
   "bin": {
