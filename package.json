@@ -10,8 +10,9 @@
     "build": "tsc",
     "start": "node lib/cli.js",
     "dev": "ts-node src/cli.ts",
+    "prepare": "yarn clean && yarn build",
     "clean": "rm -rf lib",
-    "test": "jest",
+    "test": "echo No tests yet...",
     "lint": "eslint src/**/*"
   },
   "files": [
