@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import program from 'commander';
 import { svgToReactNative } from './svg-to-rn';
 import * as fs from 'fs';
