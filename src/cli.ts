@@ -70,7 +70,7 @@ async function doOutput(data: string) {
 
 async function run() {
   const inputSvg = await getInput();
-  const outputJsx = await svgToReactNative(inputSvg, cliOptions);
+  const outputJsx = svgToReactNative(inputSvg, cliOptions);
   await doOutput(outputJsx);
 }
 

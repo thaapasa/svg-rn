@@ -20,10 +20,7 @@ function findElementNames(el: xmljs.Element): string[] {
   return names.sort();
 }
 
-export async function svgToReactNative(
-  src: string,
-  options: ConversionOptions = {},
-): Promise<string> {
+export function svgToReactNative(src: string, options: ConversionOptions = {}): string {
   try {
     const xml: xmljs.Element = xmljs.xml2js(src, {
       compact: false,
