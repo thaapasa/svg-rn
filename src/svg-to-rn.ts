@@ -1,7 +1,7 @@
 import * as xmljs from 'xml-js';
 import { wrapAsJsx } from './output';
 import { fixSvgForRN } from './fix-svg';
-import { log } from './util/logger';
+import { logError } from './util/logger';
 
 function retrieveElementNames(el: xmljs.Element, rec: Record<string, null>) {
   if (el.name) {
@@ -39,7 +39,7 @@ export async function svgToReactNative(src: string): Promise<string> {
     const rnXML = xmljs.js2xml(result, { compact: false, spaces: 2 });
     return wrapAsJsx(rnXML, els);
   } catch (e) {
-    log('Error when fixing XML:', e);
+    logError('Error when fixing XML:', e);
     return 'Invalid SVG';
   }
 }
