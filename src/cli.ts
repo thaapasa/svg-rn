@@ -4,9 +4,10 @@ import program from 'commander';
 import { svgToReactNative } from './svg-to-rn';
 import * as fs from 'fs';
 import { promisify } from 'util';
-
-import packageJson = require('../package.json');
 import { logOutput, logError } from './util/logger';
+
+// eslint-disable-next-line
+const { version } = require('../package.json');
 
 const readFileP = promisify(fs.readFile);
 const writeFileP = promisify(fs.writeFile);
@@ -23,7 +24,8 @@ interface CommandLineOptions {
 let fileInput = '';
 
 program
-  .version(packageJson.version, '-v, --version', 'output the current version')
+  .name('svg-rn')
+  .version(version, '-v, --version', 'output the current version')
   .usage('[options] [svg-file]')
   .option('-o, --output [file]', 'print output to a file')
   .option('-i, --input [file]', 'read input from a file')
