@@ -17,6 +17,7 @@ interface CommandLineOptions {
   help?: boolean;
   jsx?: boolean;
   tsx?: boolean;
+  removeIds: boolean;
 }
 
 let fileInput = '';
@@ -28,6 +29,7 @@ program
   .option('-i, --input [file]', 'read input from a file')
   .option('-t, --tsx', 'convert file to a .tsx file (default)')
   .option('-j, --jsx', 'convert file to a .jsx file')
+  .option('--remove-ids', 'remove id attributes (caution: do not use if SVG has hrefs)')
   .arguments('[file]')
   .action(file => (fileInput = file));
 
@@ -66,7 +68,7 @@ async function doOutput(data: string) {
 
 async function run() {
   const inputSvg = await getInput();
-  const outputJsx = await svgToReactNative(inputSvg);
+  const outputJsx = await svgToReactNative(inputSvg, cliOptions);
   await doOutput(outputJsx);
 }
 

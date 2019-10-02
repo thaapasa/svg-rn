@@ -1,6 +1,7 @@
 import * as xmljs from 'xml-js';
 import { hyphenCaseToCamelCase, toUpperCaseFirst } from './util/strings';
 import { flatten, pairsToObject } from './util/util';
+import { ConversionOptions } from './options';
 
 type AttributeValue = string | number | undefined;
 
@@ -47,28 +48,45 @@ const removePrefixes = (attrs: xmljs.Attributes): xmljs.Attributes => {
   return results;
 };
 
-function fixAttributes(attrs: xmljs.Attributes): xmljs.Attributes {
-  return renameAttributeKeys(removePrefixes(expandStyleAttribute(removeExtraAttrs(attrs))));
+function removeIdAttributes(attrs: xmljs.Attributes): xmljs.Attributes {
+  const copy = { ...attrs };
+  delete copy.id;
+  return copy;
 }
 
-function fixElement(element: xmljs.Element): xmljs.Element {
+function fixAttributes(attrs: xmljs.Attributes, options: ConversionOptions): xmljs.Attributes {
+  let processed = renameAttributeKeys(
+    removePrefixes(expandStyleAttribute(removeExtraAttrs(attrs))),
+  );
+  if (options.removeIds) {
+    processed = removeIdAttributes(processed);
+  }
+  return processed;
+}
+
+function fixElement(element: xmljs.Element, options: ConversionOptions): xmljs.Element {
   return {
     ...element,
     name: toUpperCaseFirst(element.name || ''),
-    elements: element.elements && element.elements.map(fixElement),
-    attributes: element.attributes && fixAttributes(element.attributes),
+    elements: element.elements && element.elements.map(e => fixElement(e, options)),
+    attributes: element.attributes && fixAttributes(element.attributes, options),
   };
 }
 
-export function fixSvgForRN(svg: xmljs.Element): xmljs.Element {
+export function fixSvgForRN(svg: xmljs.Element, options: ConversionOptions): xmljs.Element {
   const attrs = svg.attributes;
-  return fixElement({
-    ...svg,
-    elements: svg.elements
-      ? svg.elements.filter(e => e.name !== 'title' && e.name !== 'desc').map(fixElement)
-      : undefined,
-    attributes: attrs
-      ? { width: attrs.width, height: attrs.height, viewBox: attrs.viewBox }
-      : undefined,
-  });
+  return fixElement(
+    {
+      ...svg,
+      elements: svg.elements
+        ? svg.elements
+            .filter(e => e.name !== 'title' && e.name !== 'desc')
+            .map(e => fixElement(e, options))
+        : undefined,
+      attributes: attrs
+        ? { width: attrs.width, height: attrs.height, viewBox: attrs.viewBox }
+        : undefined,
+    },
+    options,
+  );
 }

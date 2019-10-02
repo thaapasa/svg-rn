@@ -2,6 +2,7 @@ import * as xmljs from 'xml-js';
 import { wrapAsJsx } from './output';
 import { fixSvgForRN } from './fix-svg';
 import { logError } from './util/logger';
+import { ConversionOptions } from './options';
 
 function retrieveElementNames(el: xmljs.Element, rec: Record<string, null>) {
   if (el.name) {
@@ -19,7 +20,10 @@ function findElementNames(el: xmljs.Element): string[] {
   return names.sort();
 }
 
-export async function svgToReactNative(src: string): Promise<string> {
+export async function svgToReactNative(
+  src: string,
+  options: ConversionOptions = {},
+): Promise<string> {
   try {
     const xml: xmljs.Element = xmljs.xml2js(src, {
       compact: false,
@@ -33,7 +37,7 @@ export async function svgToReactNative(src: string): Promise<string> {
 
     const result = {
       ...xml,
-      elements: [fixSvgForRN(svg)],
+      elements: [fixSvgForRN(svg, options)],
     };
     const els = findElementNames(result.elements[0]);
     const rnXML = xmljs.js2xml(result, { compact: false, spaces: 2 });
